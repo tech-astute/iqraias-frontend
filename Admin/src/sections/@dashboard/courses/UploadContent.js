@@ -145,7 +145,7 @@ export default function UploadContent() {
     try {
       console.log(uploadContent);
       await axios
-        .post("http://localhost:8000/api/ias/addUploadContent", uploadContent) 
+        .post("http://localhost:5000/api/ias/addUploadContent", uploadContent) 
         .then((res) => {
           console.log(res); 
         })
@@ -167,7 +167,7 @@ export default function UploadContent() {
   useEffect(() => { 
     console.log(uploadContentTableData);
     const uploadContentData= async()=>{ 
-      const {data}=await axios.get("http://localhost:8000/api/ias/getUploadContent"); 
+      const {data}=await axios.get("http://localhost:5000/api/ias/getUploadContent"); 
       console.log(data); 
       setUploadContentTableData(data);   
       console.log(uploadContentTableData); 

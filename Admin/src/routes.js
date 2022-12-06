@@ -15,17 +15,19 @@ import Students from './pages/Students';
 import Courses from './pages/Courses';
 import Questions from './pages/Questions'
 import PreviousYearPapers from './pages/PreviousYearPapers';
+import Master from './pages/Master';
 
 // ----------------------------------------------------------------------
 
 export default function Router() {
   return useRoutes([
     {
-      path: '/',
+      path: '/dashboard',
       element: <DashboardLayout />,
       children: [
         // { path: 'teachers', element: <DashboardApp /> },
-        { path: '/teachers', element: <User /> },
+        { path: 'master', element: <Master /> },
+        { path: 'teachers', element: <User /> },
         { path: 'students', element: <Students /> },
         { path: 'questions', element: <Questions /> },
         { path: 'assignTo', element: <AssignTo /> },
@@ -43,15 +45,15 @@ export default function Router() {
       path: 'register',
       element: <Register />,
     },
-    // {
-    //   path: '/',
-    //   element: <LogoOnlyLayout />,
-    //   children: [
-    //     { path: '/', element: <Navigate to="/dashboard/app" /> },
-    //     { path: '404', element: <NotFound /> },
-    //     { path: '*', element: <Navigate to="/404" /> },
-    //   ],
-    // },
+    {
+      path: '/',
+      element: <LogoOnlyLayout />,
+      children: [
+        { path: '/', element: <Navigate to="/dashboard/teachers" /> },
+        { path: '404', element: <NotFound /> },
+        { path: '*', element: <Navigate to="/404" /> },
+      ],
+    },
     // {
     //   path: '*',
     //   element: <Navigate to="/404" replace />,

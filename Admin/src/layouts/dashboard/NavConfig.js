@@ -12,33 +12,38 @@ const navConfig = [
   //   icon: getIcon('eva:pie-chart-2-fill'),
   // },
   {
+    title: 'Master',
+    path: '/dashboard/master',
+    icon: getIcon('eva:grid-outline'),
+  },
+  {
     title: 'teachers',
-    path: '/teachers',
+    path: '/dashboard/teachers',
     icon: getIcon('eva:people-fill'),
   },
   {
     title: 'students',
-    path: '/students',
+    path: '/dashboard/students',
     icon: getIcon('eva:people-fill'),
   },
   {
     title: 'Questions',
-    path: '/questions',
+    path: '/dashboard/questions',
     icon: getIcon('eva:people-fill'),
   },
   {
     title: 'Previous Year Papers',
-    path: '/previousYearPapers',
+    path: '/dashboard/previousYearPapers',
     icon: getIcon('eva:people-fill'),
   },
   {
     title: 'Courses',
-    path: '/courses',
+    path: '/dashboard/courses',
     icon: getIcon('eva:people-fill'),
   },
   {
     title: 'Assign To',
-    path: '/assignTo',
+    path: '/dashboard/assignTo',
     icon: getIcon('eva:people-fill'),
   },
   // {

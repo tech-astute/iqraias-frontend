@@ -162,7 +162,7 @@ export default function AddCourse() {
     try {
       console.log(course);
       await axios
-        .post("http://localhost:8000/api/ias/addAddCourse", course) 
+        .post("http://localhost:5000/api/ias/addAddCourse", course) 
         .then((res) => {
           console.log(res); 
         })
@@ -207,7 +207,7 @@ export default function AddCourse() {
   useEffect(() => { 
     console.log(course);
     const courseData= async()=>{ 
-      const {data}=await axios.get("http://localhost:8000/api/ias/getAddCourse"); 
+      const {data}=await axios.get("http://localhost:5000/api/ias/getAddCourse"); 
       console.log(data); 
       setCourseTableData(data);   
       console.log(courseTableData); 
