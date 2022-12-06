@@ -76,6 +76,8 @@ const Master = () => {
   const levels = useSelector((state) => state.level.levels);
   const mediums = useSelector((state) => state.medium.mediums);
 
+  console.log(categories);
+
   const [headTab, setHeadTab] = useState(0);
   const [subTab, setSubTab] = useState(0);
 

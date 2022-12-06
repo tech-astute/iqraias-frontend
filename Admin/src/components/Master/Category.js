@@ -30,15 +30,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { addStatus } from '../../actions/master/status';
+import { addCategory } from '../../actions/master/category';
 import Scrollbar from '../Scrollbar';
 import Iconify from '../Iconify';
 import SearchNotFound from '../SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../../sections/@dashboard/user';
 
 const TABLE_HEAD = [
-  { id: 'id', label: 'Id', alignRight: true },
-  { id: 'category', label: 'Category', alignRight: true },
+    { id: 'catImage', label: 'Category Image', alignRight: true },
+    { id: 'category', label: 'Category', alignRight: true },
   
 ];
 
@@ -141,6 +141,13 @@ const CategoryMaster = (props) => {
     const [category, setCategory] = useState({
       category:'',
     });
+
+    const [image, setImage] = useState();
+
+    const handleImageFile = (e) => {
+      setImage(e.target.files[0], '$$$$');
+      console.log(image);
+    };
   
     const handleChange = ({ currentTarget: input }) => {
         setCategory({
@@ -156,17 +163,21 @@ const CategoryMaster = (props) => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        console.log(category);
-        // dispatch(addStatus(category));
-        setCategoriesTable([...categoriesTable, category]);
+        const formData = new FormData();
+        formData.append('category', category.category);
+        formData.append('categoryimage', image);
+        console.log(formData);
+        dispatch(addCategory(formData));
+        setCategoriesTable([...categoriesTable, formData]);
         setCategory({
             category:'',
         });
-        alert("status submitted successfully");
+        alert("Category submitted successfully");
       } catch (error) {
         console.log(error);
       }
     };
+    console.log(image);
   
     return (
       <>
@@ -186,7 +197,17 @@ const CategoryMaster = (props) => {
             />
             </Grid>
             <Grid item md={6} xs={12}>
-                HEllo
+            <Button variant="outlined" fullWidth component="label" style={{height:'50px'}}
+            value = {image}
+            onChange = {(e) => handleImageFile(e)}
+            >
+              Upload Thumbnail
+              <input
+                hidden
+                accept="image/*"
+                type="file"
+              />
+            </Button>
             </Grid>
             </Grid>
           </Box>
@@ -213,7 +234,7 @@ const CategoryMaster = (props) => {
               />
               <TableBody>
                 {categoriesTable.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((custInfo) => {
-                  const { id, category} =
+                  const { id, category, categoryimage} =
                     custInfo;
                   const isItemSelected = selected.indexOf(id) !== -1;
 
@@ -232,7 +253,7 @@ const CategoryMaster = (props) => {
                       <TableCell align="center">
                         <Stack direction="row" alignItems="center" spacing={2}>
                           <Typography variant="subtitle2" noWrap>
-                            {id}
+                            <img src={categoryimage} alt="" />
                           </Typography>
                         </Stack>
                       </TableCell>
