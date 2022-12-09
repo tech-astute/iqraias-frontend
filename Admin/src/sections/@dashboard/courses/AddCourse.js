@@ -207,7 +207,7 @@ export default function AddCourse() {
   useEffect(() => { 
     console.log(course);
     const courseData= async()=>{ 
-      const {data}=await axios.get("http://localhost:5000/api/ias/getAddCourse"); 
+      const {data}=await axios.get("https://iqra.onrender.com/api/ias/getAddCourse"); 
       console.log(data); 
       setCourseTableData(data);   
       console.log(courseTableData); 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-    baseURL: 'http://localhost:8000/student'
+    baseURL: 'https://iqra.onrender.com/api/ias'
 });
 
 API.interceptors.request.use((req) => {
@@ -13,7 +13,7 @@ API.interceptors.request.use((req) => {
     return Promise.reject(error);
 } );
 
-export const login = (authInfo) => API.post("/login", authInfo);
-export const register = (authInfo) => API.post("/register", authInfo);
+export const login = (authInfo) => API.post("/loginStudent", authInfo);
+export const register = (authInfo) => API.post("/registerStudent", authInfo);
 export const updatePassword = (authInfo) => API.post("/updatePassword", authInfo);
 

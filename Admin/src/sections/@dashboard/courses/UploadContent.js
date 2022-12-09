@@ -145,7 +145,7 @@ export default function UploadContent() {
     try {
       console.log(uploadContent);
       await axios
-        .post("http://localhost:5000/api/ias/addUploadContent", uploadContent) 
+        .post("https://iqra.onrender.com/api/ias/addUploadContent", uploadContent) 
         .then((res) => {
           console.log(res); 
         })

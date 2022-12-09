@@ -19,7 +19,7 @@ const [uploadContentTableData, setUploadContentTableData] = useState()
   useEffect(() => { 
     console.log(uploadContentTableData);
     const uploadContentData= async()=>{ 
-      const {data}=await axios.get("http://localhost:5000/api/ias/getUploadContent"); 
+      const {data}=await axios.get("https://iqra.onrender.com/api/ias/getUploadContent"); 
       console.log(data); 
       setUploadContentTableData(data);   
       console.log(uploadContentTableData); 
